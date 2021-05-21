@@ -1,8 +1,8 @@
 async function main() {
-  const [deployer] = await ethers.getContractFactory("Calculator");
-  console.log("Deploying contracts with calculator", deployer.adress);
-
+  const Calculator = await ethers.getContractFactory("Calculator");
   const calculator = await Calculator.deploy();
+
+  await calculator.deployed();
   console.log("Calculator address:", calculator.address);
 }
 
@@ -12,12 +12,3 @@ main()
     console.error(error);
     process.exit(1);
   });
-
-
-    const Calculator = await hre.ethers.getContractFactory('Calculator');
-  const calculator = await Calculator.deploy();
-
-  await calculator.deployed();
-
-  console.log("Calculator deployed to:", calculator.address);
-}
