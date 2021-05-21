@@ -6,11 +6,20 @@ describe("Calculator contract", function () {
 
     const calculator = await Calculator.deploy();
 
+    expect(await calculator.add(1, 2)).to.equal(3);
+    expect(await calculator.mul(1, 2)).to.equal(2);
+    expect(await calculator.div(4, 2)).to.equal(2);
+    await expect(calculator.div(2, 0)).to.be.revertedWith("Calculator can not divide digit 0");
+    expect(await calculator.sub(5, 1)).to.equal(4);
+    expect(await calculator.modulo(2, 2)).to.equal(0);
+
+    /*
     expect(await calculator.add(1, 2)).to.equal(1 + 2);
     expect(await calculator.mul(1, 2)).to.equal(1 * 2);
     expect(await calculator.div(2, 1)).to.equal(2 / 1);
     await expect(calculator.div(2, 0)).to.be.revertedWith("Calculator can not divide digit 0");
     expect(await calculator.sub(2, 1)).to.equal(2 - 1);
     expect(await calculator.modulo(2, 2)).to.equal(2 % 2);
+  */
   });
 });
